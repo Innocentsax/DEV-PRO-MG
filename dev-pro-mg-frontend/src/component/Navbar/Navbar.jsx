@@ -5,8 +5,8 @@ import "./Navbar.css";
 const Navbar = () => {
   return (
     <div
-      className="container z-10 sticky left-0 right-0 top-0 py-3 px-5 
-    lg:px-10 flex justify-between items-center"
+      className="dev z-10 sticky left-0 right-0 top-0 py-3 px-5 
+    lg:px-10 flex justify-between items-center w-[100vw]"
     >
       <p className="font-bold text-1g">DEV PRO MANAGER</p>
 
