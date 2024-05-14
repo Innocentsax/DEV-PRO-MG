@@ -1,8 +1,7 @@
-import { Avatar } from "@mui/material";
+import { Avatar, Button } from "@mui/material";
 import React from "react";
 import "./Sidebar.css";
 import { useState } from "react";
-import { Button } from "@mui/material";
 
 const menu = [
   { name: "HOME", value: "HOME", role: ["ROLE_ADMIN", "ROLE_CUSTOMER"] },
@@ -18,6 +17,9 @@ const Sidebar = () => {
   const [activeMenu, setActiveMenu] = useState("DONE");
   const handleMenuChange = (item) => {
     setActiveMenu(item.name);
+  };
+  const handleLogout = () => {
+    console.log("Handle logout");
   };
   return (
     <div className="card min-h-[85vh] flex flex-col justify-center fixed w-[20vw]">
@@ -46,6 +48,7 @@ const Sidebar = () => {
         <Button
           sx={{ padding: ".7rem", borderRadius: "2rem" }}
           fullWidth
+          onClick={handleLogout}
           className="logoutButton"
         >
           Logout
