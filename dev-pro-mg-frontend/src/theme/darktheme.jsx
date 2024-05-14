@@ -9,8 +9,8 @@ export const darkTheme = createTheme({
     text: {
       primary: "#fff",
     },
-    primary: {
-      main: "rgba(215,106,255,0.507",
-    },
+    // primary: {
+    //   main: "rgba(215,106,255,0.507",
+    // },
   },
 });
