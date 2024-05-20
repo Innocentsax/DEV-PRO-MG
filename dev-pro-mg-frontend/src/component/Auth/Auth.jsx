@@ -3,10 +3,13 @@ import "./Auth.css";
 import Signin from "./Signin";
 
 const Auth = () => {
-  const [isRegister, setIsRegister] = useState(false);
+  const [isRegister, setIsRegister] = useState(true);
+
   const togglePanel = () => {
+    console.log("clicked toggle");
     setIsRegister(!isRegister);
   };
+
   return (
     <div className="flex justify-center h-screen items-center overflow-hidden">
       <div className="box lg:max-w-4xl">
