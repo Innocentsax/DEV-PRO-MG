@@ -44,7 +44,7 @@
 }
 
 .cover .back {
-  transform: rotateY("180deg");
+  transform: rotateY(180deg);
   backface-visibility: hidden;
 }
 
@@ -79,6 +79,7 @@
   align-items: center;
   z-index: 130;
   justify-self: center;
+  justify-content: center;
 }
 
 .box .cover .text {
