@@ -1,9 +1,10 @@
 import React, { useState } from "react";
 import "./Auth.css";
 import Signin from "./Signin";
+import Signup from "./Signup";
 
 const Auth = () => {
-  const [isRegister, setIsRegister] = useState(true);
+  const [isRegister, setIsRegister] = useState();
 
   const togglePanel = () => {
     console.log("clicked toggle");
@@ -16,7 +17,7 @@ const Auth = () => {
         <div className={`cover ${isRegister ? "rotate-active" : ""}`}>
           <div className="front">
             <img
-              src="https://cdn.pixabay.com/photo/2017/11/27/21/31/computer-2982270_1280.jpg"
+              src="https://cdn.pixabay.com/photo/2020/10/21/18/07/laptop-5673901_1280.jpg"
               alt=""
             />
             <div className="text">
@@ -28,7 +29,7 @@ const Auth = () => {
           </div>
           <div className="back">
             <img
-              src="https://cdn.pixabay.com/photo/2020/10/21/18/07/laptop-5673901_1280.jpg"
+              src="https://cdn.pixabay.com/photo/2017/11/27/21/31/computer-2982270_1280.jpg"
               alt=""
             />
           </div>
@@ -38,7 +39,9 @@ const Auth = () => {
             <div className="login-form">
               <Signin togglePanel={togglePanel} />
             </div>
-            <div className="signup-form">Signup-form</div>
+            <div className="signup-form">
+              <Signup togglePanel={togglePanel} />
+            </div>
           </div>
         </div>
       </div>
