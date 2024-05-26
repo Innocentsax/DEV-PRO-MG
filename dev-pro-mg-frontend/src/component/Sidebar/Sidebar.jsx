@@ -3,6 +3,7 @@ import React from "react";
 import "./Sidebar.css";
 import { useState } from "react";
 import CreateNewTaskForm from "../Tasks/CreateTask";
+import { useLocation, useNavigate } from "react-router-dom";
 
 const menu = [
   { name: "HOME", value: "HOME", role: ["ROLE_ADMIN", "ROLE_CUSTOMER"] },
@@ -15,6 +16,8 @@ const menu = [
 const role = "ROLE_ADMIN";
 
 const Sidebar = () => {
+  const location = useLocation();
+  const navigate = useNavigate();
   const [activeMenu, setActiveMenu] = useState("DONE");
   const [openCreateTaskForm, setOpenCreateTaskForm] = useState(false);
   const handleCloseCreateTaskForm = () => {
@@ -24,8 +27,19 @@ const Sidebar = () => {
     setOpenCreateTaskForm(true);
   };
   const handleMenuChange = (item) => {
+    const updatedParams = new URLSearchParams(location.search);
     if (item.name === "CREATE NEW TASK") {
       handleOpenCreateTaskModel();
+    } else if (item.name === "HOME") {
+      updatedParams.delete("filter");
+      const queryString = updatedParams.toString();
+      const updatedPath = queryString
+        ? `${location.pathname}?${queryString}`
+        : location.pathname;
+      navigate(updatedPath);
+    } else {
+      updatedParams.set("filter", item.value);
+      navigate(`${location.pathname}?${updatedParams.toString()}`);
     }
     setActiveMenu(item.name);
   };
