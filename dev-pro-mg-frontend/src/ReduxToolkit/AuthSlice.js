@@ -4,7 +4,7 @@ import { BASE_URL, api, setAuthHeader } from "./api/Api";
 
 export const login = createAsyncThunk("auth/login", async (userData) => {
   try {
-    const { data } = await axios.post(`${BASE_URL}/api/signin`, userData);
+    const { data } = await axios.post(`${BASE_URL}/auths/sign-in`, userData);
     localStorage.setItem("jwt", data.jwt);
     console.log("login success", data);
     return data;
@@ -49,20 +49,17 @@ export const getUserProfile = createAsyncThunk(
     }
   }
 );
-export const getUserList = createAsyncThunk(
-  "auth/getUserProfile",
-  async (jwt) => {
-    setAuthHeader(jwt, api);
-    try {
-      const { data } = await api.get(`/api/users`);
-      console.log("User list success", data);
-      return data;
-    } catch (error) {
-      console.log("catch error", error);
-      throw Error(error.response.data.error);
-    }
+export const getUserList = createAsyncThunk("auth/getUserList", async (jwt) => {
+  setAuthHeader(jwt, api);
+  try {
+    const { data } = await api.get(`/api/users`);
+    console.log("User list success", data);
+    return data;
+  } catch (error) {
+    console.log("catch error", error);
+    throw Error(error.response.data.error);
   }
-);
+});
 
 const authSlice = createSlice({
   name: "auth",
